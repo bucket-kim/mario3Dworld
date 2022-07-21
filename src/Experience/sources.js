@@ -3,12 +3,12 @@ export default [
     name: "environmentMapTexture",
     type: "cubeTexture",
     path: [
-      "/textures/environmentMap/px.png",
-      "/textures/environmentMap/nx.png",
-      "/textures/environmentMap/py.png",
-      "/textures/environmentMap/ny.png",
-      "/textures/environmentMap/pz.png",
-      "/textures/environmentMap/nz.png",
+      "/textures/environmentMap2/px.png",
+      "/textures/environmentMap2/nx.png",
+      "/textures/environmentMap2/py.png",
+      "/textures/environmentMap2/ny.png",
+      "/textures/environmentMap2/pz.png",
+      "/textures/environmentMap2/nz.png",
     ],
   },
   {
@@ -20,5 +20,15 @@ export default [
     name: "marioLandTexture",
     type: "texture",
     path: "/textures/modelTexture/bake-land.png",
+  },
+  {
+    name: "marioItemTexture",
+    type: "texture",
+    path: "/textures/modelTexture/bake-items.png",
+  },
+  {
+    name: "marioButtonsTexture",
+    type: "texture",
+    path: "/textures/modelTexture/bake-buttons.png",
   },
 ];

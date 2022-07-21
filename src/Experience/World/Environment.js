@@ -13,7 +13,7 @@ export default class Environment {
       this.debugFolder = this.debug.ui.addFolder("environment");
     }
 
-    this.setSunLight();
+    // this.setSunLight();
     this.setEnvMap();
   }
 
@@ -29,11 +29,12 @@ export default class Environment {
 
   setEnvMap() {
     this.environmentMap = {};
-    this.environmentMap.intensity = 0.4;
+    this.environmentMap.intensity = 1;
     this.environmentMap.texture = this.resources.items.environmentMapTexture;
     this.environmentMap.texture.encoding = THREE.sRGBEncoding;
 
     this.scene.environment = this.environmentMap.texture;
+    this.scene.background = this.environmentMap.texture;
 
     this.environmentMap.updateMaterial = () => {
       this.scene.traverse((child) => {
