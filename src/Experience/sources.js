@@ -11,4 +11,14 @@ export default [
       "/textures/environmentMap/nz.png",
     ],
   },
+  {
+    name: "marioLand",
+    type: "gltfModel",
+    path: "/models/land.glb",
+  },
+  {
+    name: "marioLandTexture",
+    type: "texture",
+    path: "/textures/modelTexture/bake-land.png",
+  },
 ];
