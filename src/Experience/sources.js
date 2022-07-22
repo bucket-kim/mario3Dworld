@@ -41,4 +41,9 @@ export default [
     type: "texture",
     path: "/textures/modelTexture/bake-clouds.png",
   },
+  {
+    name: "water",
+    type: "gltfModel",
+    path: "/models/water.glb",
+  },
 ];
