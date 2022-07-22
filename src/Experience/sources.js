@@ -31,4 +31,14 @@ export default [
     type: "texture",
     path: "/textures/modelTexture/bake-buttons.png",
   },
+  {
+    name: "cloud",
+    type: "gltfModel",
+    path: "/models/cloud.glb",
+  },
+  {
+    name: "cloudTexture",
+    type: "texture",
+    path: "/textures/modelTexture/bake-clouds.png",
+  },
 ];

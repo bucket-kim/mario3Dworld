@@ -2,6 +2,7 @@ import * as THREE from "three";
 import Experience from "../Experience.js";
 import Environment from "./Environment.js";
 import marioLand from "./marioLand.js";
+import Cloud from "./Cloud.js";
 
 export default class World {
   constructor() {
@@ -21,8 +22,13 @@ export default class World {
       // setup
       this.environment = new Environment();
       this.marioLand = new marioLand();
+      this.cloud = new Cloud();
     });
   }
 
-  update() {}
+  update() {
+    if (this.cloud) {
+      this.cloud.update();
+    }
+  }
 }
