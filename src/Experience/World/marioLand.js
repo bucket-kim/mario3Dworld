@@ -25,6 +25,10 @@ export default class marioLand {
     this.model.itemTexture.encoding = THREE.sRGBEncoding;
     this.model.itemTexture.flipY = false;
 
+    this.model.buttonTexture = this.resources.items.marioButtonsTexture;
+    this.model.buttonTexture.encoding = THREE.sRGBEncoding;
+    this.model.buttonTexture.flipY = false;
+
     this.model.landMaterial = new THREE.MeshBasicMaterial({
       map: this.model.landTexture,
     });
@@ -33,18 +37,24 @@ export default class marioLand {
       map: this.model.itemTexture,
     });
 
+    this.model.buttonMaterial = new THREE.MeshBasicMaterial({
+      map: this.model.buttonTexture,
+    });
+
     this.scene.add(this.model.geometry);
 
     this.model.geometry.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        // console.log(child.name);
         if (child.name.includes("land")) {
           child.material = this.model.landMaterial;
         }
 
         if (child.name.includes("items")) {
-          console.log("hi");
           child.material = this.model.itemMaterial;
+        }
+
+        if (child.name.includes("button")) {
+          child.material = this.model.buttonMaterial;
         }
       }
     });
