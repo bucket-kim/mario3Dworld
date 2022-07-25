@@ -17,8 +17,6 @@ export default class marioLand {
 
     this.randNum = (getRandNumb(1, 3.5) / 10).toFixed(2);
 
-    console.log(this.randNum);
-
     this.setModel();
   }
 

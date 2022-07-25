@@ -108,7 +108,7 @@ export default class Ocean {
 
     this.ocean.mesh = new THREE.Mesh(this.ocean.geometry, this.ocean.material);
     this.ocean.mesh.rotation.x = -Math.PI * 0.5;
-    this.ocean.mesh.position.y = 0.05;
+    this.ocean.mesh.position.y = 0.0;
 
     this.scene.add(this.ocean.mesh);
   }
