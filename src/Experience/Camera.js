@@ -36,8 +36,8 @@ export default class Camera {
 
     this.controls.zoomSpeed = 0.25;
 
-    const minPan = new THREE.Vector3(-2, -0.75, -2);
-    const maxPan = new THREE.Vector3(2, 1, 2);
+    const minPan = new THREE.Vector3(-3, -0.75, -2);
+    const maxPan = new THREE.Vector3(3, 1, 2);
     const _v = new THREE.Vector3();
     this.controls.addEventListener("change", () => {
       _v.copy(this.controls.target);
