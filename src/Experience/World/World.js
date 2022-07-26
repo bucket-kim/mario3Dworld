@@ -37,5 +37,8 @@ export default class World {
     if (this.ocean) {
       this.ocean.update();
     }
+    if (this.water) {
+      this.water.update();
+    }
   }
 }

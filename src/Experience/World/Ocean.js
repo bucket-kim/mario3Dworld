@@ -19,7 +19,7 @@ export default class Ocean {
   setOcean() {
     // set up ocean mesh
     this.color = {};
-    this.color.depthColor = "#4599f4";
+    this.color.depthColor = "#3cacf2";
     this.color.surfaceColor = "#d1fcfc";
 
     this.ocean = {};
@@ -66,8 +66,6 @@ export default class Ocean {
       vertexShader: oceanVertex,
       fragmentShader: oceanFragment,
     });
-
-    console.log(this.ocean.material.uniforms.uBigWavesFrequency.value);
 
     this.ocean.mesh = new THREE.Mesh(this.ocean.geometry, this.ocean.material);
     this.ocean.mesh.rotation.x = -Math.PI * 0.5;

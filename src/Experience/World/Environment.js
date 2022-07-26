@@ -36,6 +36,8 @@ export default class Environment {
     this.scene.environment = this.environmentMap.texture;
     this.scene.background = this.environmentMap.texture;
 
+    // this.scene.rotation.y = Math.PI * 0.5;
+
     this.environmentMap.updateMaterial = () => {
       this.scene.traverse((child) => {
         if (
@@ -52,6 +54,7 @@ export default class Environment {
     this.environmentMap.updateMaterial();
 
     // debug
+
     if (this.debug.active) {
       this.debugFolder
         .add(this.environmentMap, "intensity")
