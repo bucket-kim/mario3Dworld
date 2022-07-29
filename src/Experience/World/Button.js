@@ -36,29 +36,27 @@ export default class Button {
       map: this.model.buttonTexture,
     });
 
-    this.model.geometry.traverse((child) => {
-      if (child.name.includes("button")) {
-        child.material = this.model.buttonMaterial;
-        child.receiveShadow = true;
-      }
-    });
-
-    this.model.mesh = new THREE.Mesh(
-      this.model.geometry.children,
-      this.model.buttonMaterial
-    );
-
-    this.scene.add(this.model.mesh);
-
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2(1, 1);
 
     this.raycaster.setFromCamera(this.mouse, this.camera.instance);
 
+    this.model.geometry.traverse((child) => {
+      if (child.name.includes("button")) {
+        child.material = this.model.buttonMaterial;
+        child.receiveShadow = true;
+        // this.buttonArr.push(child);
+      }
+    });
+
+    this.scene.add(this.model.geometry);
+
     this.intersects = this.raycaster.intersectObjects(
-      this.model.geometry.children,
+      this.scene.children,
       true
     );
+
+    console.log(this.intersects);
 
     const mouseMove = (e) => {
       this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
