@@ -30,7 +30,7 @@ export default class Ocean {
           value: 0.02,
         },
         uBigWavesFrequency: {
-          value: new THREE.Vector2(4.0, 1.5),
+          value: new THREE.Vector2(1.0, 1.5),
         },
         uTime: {
           value: 0,
@@ -45,10 +45,10 @@ export default class Ocean {
           value: new THREE.Color(this.color.surfaceColor),
         },
         uColorOffset: {
-          value: 0.02,
+          value: 0.01,
         },
         uColorMultiplier: {
-          value: 5.0,
+          value: 10.0,
         },
         uSmallWavesElevation: {
           value: 0.05,

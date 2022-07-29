@@ -13,7 +13,7 @@ export default class Environment {
       this.debugFolder = this.debug.ui.addFolder("environment");
     }
 
-    this.setSunLight();
+    // this.setSunLight();
     this.setEnvMap();
   }
 
@@ -35,6 +35,8 @@ export default class Environment {
 
     this.scene.environment = this.environmentMap.texture;
     this.scene.background = this.environmentMap.texture;
+
+    // this.scene.rotation.y = 10;
 
     // this.scene.rotation.y = Math.PI * 0.5;
 
@@ -71,27 +73,6 @@ export default class Environment {
         .name("sunLightIntensity")
         .min(0)
         .max(10)
-        .step(0.001);
-
-      this.debugFolder
-        .add(this.sunLight.position, "x")
-        .name("sunLightX")
-        .min(-5)
-        .max(5)
-        .step(0.001);
-
-      this.debugFolder
-        .add(this.sunLight.position, "y")
-        .name("sunLightY")
-        .min(-5)
-        .max(5)
-        .step(0.001);
-
-      this.debugFolder
-        .add(this.sunLight.position, "z")
-        .name("sunLightZ")
-        .min(-5)
-        .max(5)
         .step(0.001);
     }
   }

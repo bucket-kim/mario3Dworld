@@ -46,4 +46,9 @@ export default [
     type: "gltfModel",
     path: "/models/water.glb",
   },
+  {
+    name: "button",
+    type: "gltfModel",
+    path: "/models/buttons.glb",
+  },
 ];

@@ -5,6 +5,7 @@ import marioLand from "./marioLand.js";
 import Cloud from "./Cloud.js";
 import Ocean from "./Ocean.js";
 import Water from "./Water.js";
+import Button from "./Button.js";
 
 export default class World {
   constructor() {
@@ -27,6 +28,7 @@ export default class World {
       this.cloud = new Cloud();
       this.ocean = new Ocean();
       this.water = new Water();
+      this.button = new Button();
     });
   }
 
@@ -39,6 +41,9 @@ export default class World {
     }
     if (this.water) {
       this.water.update();
+    }
+    if (this.button) {
+      this.button.update();
     }
   }
 }
