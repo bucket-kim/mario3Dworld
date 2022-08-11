@@ -23,13 +23,19 @@ export default class World {
 
     this.resources.on("ready", () => {
       // setup
-      this.environment = new Environment();
       this.marioLand = new marioLand();
       this.cloud = new Cloud();
       this.ocean = new Ocean();
       this.water = new Water();
       this.button = new Button();
+      // this.environment = new Environment();
     });
+  }
+
+  resize() {
+    if (this.button) {
+      this.button.resize();
+    }
   }
 
   update() {

@@ -47,7 +47,12 @@ export default class marioLand {
         }
 
         child.receiveShadow = true;
+        child.layers.set(0);
       }
     });
+
+    this.camera.instance.layers.enable(0);
   }
+
+  update() {}
 }

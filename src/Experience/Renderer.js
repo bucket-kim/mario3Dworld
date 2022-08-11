@@ -16,6 +16,7 @@ export default class Renderer {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       antialias: true,
+      alpha: true,
     });
     this.renderer.physicallyCorrectLights = true;
     this.renderer.outputEncoding = THREE.sRGBEncoding;
@@ -23,7 +24,9 @@ export default class Renderer {
     this.renderer.toneMappingExposure = 1.75;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.renderer.setClearColor("#211d20");
+    this.renderer.autoClear = false;
+    // this.renderer.autoClearDepth = false;
+    this.renderer.setClearColor(0x000000);
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(this.sizes.pixelRatio);
   }
