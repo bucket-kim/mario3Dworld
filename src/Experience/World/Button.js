@@ -120,6 +120,8 @@ export default class Button {
   }
 
   update() {
+    this.bloomPass.strength = Math.sin(this.time.elapsed * 0.0025);
+
     this.scene.traverse(this.darkenNonBloom);
     this.bloomComposer.render();
     this.scene.traverse(this.restoreMat);
