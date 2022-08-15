@@ -12,6 +12,11 @@ export default [
     ],
   },
   {
+    name: "skyTexture",
+    type: "texture",
+    path: "/textures/environmentMap/Day Sun Mid Cloudslayer2.png",
+  },
+  {
     name: "marioLand",
     type: "gltfModel",
     path: "/models/land.glb",

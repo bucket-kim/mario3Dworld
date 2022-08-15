@@ -29,12 +29,12 @@ export default class Environment {
 
   setEnvMap() {
     this.environmentMap = {};
-    this.environmentMap.intensity = 1;
+    this.environmentMap.intensity = 1.4;
     this.environmentMap.texture = this.resources.items.environmentMapTexture;
     this.environmentMap.texture.encoding = THREE.sRGBEncoding;
 
     this.scene.environment = this.environmentMap.texture;
-    this.scene.background = this.environmentMap.texture;
+    // this.scene.background = this.environmentMap.texture;
 
     // this.scene.rotation.y = 10;
 
@@ -52,6 +52,22 @@ export default class Environment {
         }
       });
     };
+
+    this.sphere = {};
+    this.sphere.geo = new THREE.SphereGeometry(30, 32, 16);
+
+    this.skyTexture = this.resources.items.skyTexture;
+    this.skyTexture.encoding = THREE.sRGBEncoding;
+
+    this.sphere.mat = new THREE.MeshBasicMaterial({
+      map: this.skyTexture,
+    });
+    this.sphere.mat.side = THREE.DoubleSide;
+    this.sphere.mesh = new THREE.Mesh(this.sphere.geo, this.sphere.mat);
+    this.sphere.mesh.rotation.y = Math.PI * 3.15;
+    this.sphere.mesh.position.y = -1;
+
+    this.scene.add(this.sphere.mesh);
 
     this.environmentMap.updateMaterial();
 

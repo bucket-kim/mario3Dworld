@@ -28,7 +28,7 @@ export default class World {
       this.ocean = new Ocean();
       this.water = new Water();
       this.button = new Button();
-      // this.environment = new Environment();
+      this.environment = new Environment();
     });
   }
 
