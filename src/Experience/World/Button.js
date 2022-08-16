@@ -4,7 +4,6 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
-import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader.js";
 import buttonVertex from "../Shaders/Button/vertexShader.glsl";
 import buttonFragment from "../Shaders/Button/fragmentShader.glsl";
 
@@ -20,6 +19,11 @@ export default class Button {
     this.sizes = this.experience.sizes;
 
     this.bloom_layer = 1;
+
+    this.raycaster = new THREE.Raycaster();
+    this.buttons = [];
+
+    this.mouse = new THREE.Vector2(0, 0);
 
     // raycasting
 
@@ -43,11 +47,30 @@ export default class Button {
     });
 
     this.model.geometry.traverse((child) => {
-      if (child.name.includes("button")) {
+      if (child instanceof THREE.Mesh) {
         child.material = this.model.buttonMaterial;
         child.receiveShadow = true;
         child.layers.enable(this.bloom_layer);
+        child.userData.isContainer = true;
+
+        // raycast
+        // console.log(child.position);
       }
+      this.renderer.renderer.domElement.addEventListener("mousemove", (e) => {
+        this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+        this.raycaster.setFromCamera(this.mouse, this.camera.instance);
+
+        this.intersects = this.raycaster.intersectObjects(
+          this.model.geometry.children,
+          true
+        );
+
+        if (this.intersects.length > 0) {
+          // console.log(this.intersects[0].object);
+        }
+      });
     });
 
     this.scene.add(this.model.geometry);
