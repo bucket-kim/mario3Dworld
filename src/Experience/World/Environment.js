@@ -33,7 +33,7 @@ export default class Environment {
     this.environmentMap.texture = this.resources.items.environmentMapTexture;
     this.environmentMap.texture.encoding = THREE.sRGBEncoding;
 
-    this.scene.environment = this.environmentMap.texture;
+    // this.scene.environment = this.environmentMap.texture;
     // this.scene.background = this.environmentMap.texture;
 
     // this.scene.rotation.y = 10;
@@ -69,7 +69,7 @@ export default class Environment {
 
     this.scene.add(this.sphere.mesh);
 
-    this.environmentMap.updateMaterial();
+    // this.environmentMap.updateMaterial();
 
     // debug
 

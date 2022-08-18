@@ -22,7 +22,7 @@ export default class Renderer {
     this.renderer.outputEncoding = THREE.sRGBEncoding;
     this.renderer.toneMapping = THREE.CineonToneMapping;
     this.renderer.toneMappingExposure = 3;
-    this.renderer.shadowMap.enabled = true;
+    // this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.autoClear = false;
     // this.renderer.autoClearDepth = false;

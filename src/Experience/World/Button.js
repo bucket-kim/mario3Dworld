@@ -18,7 +18,7 @@ export default class Button {
     this.renderer = this.experience.renderer;
     this.sizes = this.experience.sizes;
 
-    this.bloom_layer = 1;
+    this.bloom_layer = 2;
 
     this.raycaster = new THREE.Raycaster();
     this.buttons = [];
@@ -29,6 +29,35 @@ export default class Button {
 
     this.setBloom();
     this.setModel();
+    this.setPoints();
+  }
+  setPoints() {
+    this.points = [
+      {
+        element: document.querySelector(".point-01"),
+      },
+      {
+        element: document.querySelector(".point-02"),
+      },
+      {
+        element: document.querySelector(".point-03"),
+      },
+      {
+        element: document.querySelector(".point-04"),
+      },
+      {
+        element: document.querySelector(".point-05"),
+      },
+      {
+        element: document.querySelector(".point-06"),
+      },
+      {
+        element: document.querySelector(".point-07"),
+      },
+      {
+        element: document.querySelector(".point-08"),
+      },
+    ];
   }
 
   setModel() {
@@ -52,25 +81,10 @@ export default class Button {
         child.receiveShadow = true;
         child.layers.enable(this.bloom_layer);
         child.userData.isContainer = true;
+        // console.log(child.position);
 
         // raycast
-        // console.log(child.position);
       }
-      this.renderer.renderer.domElement.addEventListener("mousemove", (e) => {
-        this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-        this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-        this.raycaster.setFromCamera(this.mouse, this.camera.instance);
-
-        this.intersects = this.raycaster.intersectObjects(
-          this.model.geometry.children,
-          true
-        );
-
-        if (this.intersects.length > 0) {
-          // console.log(this.intersects[0].object);
-        }
-      });
     });
 
     this.scene.add(this.model.geometry);
@@ -151,5 +165,31 @@ export default class Button {
     this.finalComposer.render();
     this.renderer.renderer.setClearColor(0x000000);
     this.renderer.renderer.setClearAlpha(0);
+
+    this.renderer.renderer.domElement.addEventListener("mousemove", (e) => {
+      this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+      this.raycaster.setFromCamera(this.mouse, this.camera.instance);
+
+      this.intersects = this.raycaster.intersectObjects(
+        this.model.geometry.children,
+        true
+      );
+
+      for (let point of this.points) {
+        if (
+          this.intersects.find(
+            (intersect) =>
+              intersect.object.name.slice(-2) ===
+              point.element.classList.value.slice(-2)
+          )
+        ) {
+          point.element.style.opacity = 1;
+        } else {
+          point.element.style.opacity = 0;
+        }
+      }
+    });
   }
 }
