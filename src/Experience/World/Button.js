@@ -57,6 +57,57 @@ export default class Button {
       {
         element: document.querySelector(".point-08"),
       },
+      {
+        element: document.querySelector(".point-09"),
+      },
+      {
+        element: document.querySelector(".point-10"),
+      },
+      {
+        element: document.querySelector(".point-11"),
+      },
+      {
+        element: document.querySelector(".point-12"),
+      },
+      {
+        element: document.querySelector(".point-13"),
+      },
+      {
+        element: document.querySelector(".point-14"),
+      },
+      {
+        element: document.querySelector(".point-15"),
+      },
+      {
+        element: document.querySelector(".point-16"),
+      },
+      {
+        element: document.querySelector(".point-17"),
+      },
+      {
+        element: document.querySelector(".point-18"),
+      },
+      {
+        element: document.querySelector(".point-19"),
+      },
+      {
+        element: document.querySelector(".point-20"),
+      },
+      {
+        element: document.querySelector(".point-21"),
+      },
+      {
+        element: document.querySelector(".point-22"),
+      },
+      {
+        element: document.querySelector(".point-23"),
+      },
+      {
+        element: document.querySelector(".point-24"),
+      },
+      {
+        element: document.querySelector(".point-25"),
+      },
     ];
   }
 
