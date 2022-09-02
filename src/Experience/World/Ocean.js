@@ -13,7 +13,8 @@ export default class Ocean {
     this.renderer = this.experience.renderer;
     this.time = this.experience.time;
 
-    this.setOcean();
+    // this.setOcean();
+    this.test();
   }
 
   setOcean() {
@@ -73,8 +74,82 @@ export default class Ocean {
 
     this.scene.add(this.ocean.mesh);
   }
+  test() {
+    this.params = {
+      foamColor: 0xffffff,
+      waterColor: 0x14c6a5,
+      threshold: 0.1,
+    };
+
+    this.renderTarget = new THREE.WebGLRenderTarget(
+      window.innerWidth * this.renderer.pixelRatio,
+      window.innerHeight * this.renderer.pixelRatio
+    );
+    this.renderTarget.texture.minFilter = THREE.NearestFilter;
+    this.renderTarget.texture.magFilter = THREE.NearestFilter;
+    this.renderTarget.texture.generateMipmaps = false;
+    this.renderTarget.stencilBuffer = false;
+    this.renderTarget.depthTexture = new THREE.DepthTexture();
+    this.renderTarget.depthTexture.type = THREE.UnsignedShortType;
+    this.renderTarget.depthTexture.minFilter = THREE.NearestFilter;
+    this.renderTarget.depthTexture.magFilter = THREE.NearestFilter;
+
+    // deatph material
+    this.depthMaterial = new THREE.MeshDepthMaterial();
+    this.depthMaterial.depthPacking = THREE.RGBADepthPacking;
+    this.depthMaterial.blending = THREE.NoBlending;
+
+    this.dudvMap = new THREE.TextureLoader().load(
+      "https://i.imgur.com/hOIsXiZ.png"
+    );
+    this.dudvMap.wrapS = this.dudvMap.wrapT = THREE.RepeatWrapping;
+
+    this.uniforms = {
+      time: {
+        value: 0,
+      },
+      threshold: {
+        value: 0.1,
+      },
+      tDudv: {
+        value: null,
+      },
+      tDepth: {
+        value: null,
+      },
+      cameraNear: {
+        value: 0,
+      },
+      cameraFar: {
+        value: 0,
+      },
+      resolution: {
+        value: new THREE.Vector2(),
+      },
+      foamColor: {
+        value: new THREE.Color(),
+      },
+      waterColor: {
+        value: new THREE.Color(),
+      },
+    };
+
+    this.ocean = {};
+    this.ocean.geo = new THREE.PlaneGeometry(50, 50);
+    this.ocean.mat = new THREE.ShaderMaterial({
+      uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib["fog"],
+        this.uniforms,
+      ]),
+    });
+
+    this.ocean.mesh = new THREE.Mesh(this.ocean.geo, this.ocean.mat);
+    this.ocean.mesh.rotation.x = -Math.PI * 0.5;
+
+    this.scene.add(this.ocean.mesh);
+  }
 
   update() {
-    this.ocean.material.uniforms.uTime.value = this.time.elapsed * 0.001;
+    // this.ocean.material.uniforms.uTime.value = this.time.elapsed * 0.001;
   }
 }
